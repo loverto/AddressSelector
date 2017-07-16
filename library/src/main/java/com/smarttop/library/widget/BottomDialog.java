@@ -70,36 +70,42 @@ public class BottomDialog extends Dialog {
     }
     /**
      *设置字体选中的颜色
+     * @param selectedColor 选中颜色
      */
     public void setTextSelectedColor(int selectedColor){
         this.selector.setTextSelectedColor(selectedColor);
     }
     /**
      *设置字体没有选中的颜色
+     * @param unSelectedColor 未选中颜色
      */
     public void setTextUnSelectedColor(int unSelectedColor){
         this.selector.setTextUnSelectedColor(unSelectedColor);
     }
     /**
      * 设置字体的大小
+     * @param dp 字体大小 单位dp
      */
     public void setTextSize(float dp){
        this.selector.setTextSize(dp);
     }
     /**
      * 设置字体的背景
+     * @param colorId 颜色编码
      */
     public void setBackgroundColor(int colorId){
        this.selector.setBackgroundColor(colorId);
     }
     /**
      * 设置指示器的背景
+     * @param colorId 颜色编码
      */
     public void setIndicatorBackgroundColor(int colorId){
         this.selector.setIndicatorBackgroundColor(colorId);
     }
     /**
      * 设置指示器的背景
+     * @param color 颜色
      */
     public void setIndicatorBackgroundColor(String color){
         this.selector.setIndicatorBackgroundColor(color);

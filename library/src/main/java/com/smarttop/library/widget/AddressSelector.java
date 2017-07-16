@@ -154,7 +154,7 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      * 得到数据库管理者
-     * @return
+     * @return 地址词典管理器
      */
     public AddressDictManager getAddressDictManager(){
         return addressDictManager;
@@ -187,6 +187,7 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      *设置字体选中的颜色
+     * @param  selectedColor 选中颜色
      */
      public void setTextSelectedColor(int selectedColor){
             this.selectedColor = selectedColor;
@@ -194,12 +195,14 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      *设置字体没有选中的颜色
+     * @param unSelectedColor 未选中颜色
      */
     public void setTextUnSelectedColor(int unSelectedColor){
             this.unSelectedColor = unSelectedColor;
     }
     /**
      * 设置字体的大小
+     * @param dp 字体大小单位 dp
      */
    public void setTextSize(float dp){
        textViewProvince.setTextSize(dp);
@@ -210,6 +213,7 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      * 设置字体的背景
+     * @param colorId 颜色
      */
     public void setBackgroundColor(int colorId){
         layout_tab.setBackgroundColor(context.getResources().getColor(colorId));
@@ -217,12 +221,14 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      * 设置指示器的背景
+     * @param colorId 颜色编码
      */
     public void setIndicatorBackgroundColor(int colorId){
         indicator.setBackgroundColor(context.getResources().getColor(colorId));
     }
     /**
      * 设置指示器的背景
+     * @param color 颜色
      */
     public void setIndicatorBackgroundColor(String color){
         indicator.setBackgroundColor(Color.parseColor(color));
@@ -560,7 +566,7 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      * 获得view
-     * @return
+     * @return view组件
      */
     public View getView() {
         return view;
@@ -780,7 +786,7 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      * 设置地址监听
-     * @param listener
+     * @param listener 地址的监听事件
      */
     public void setOnAddressSelectedListener(OnAddressSelectedListener listener) {
         this.listener = listener;
@@ -790,6 +796,7 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
     }
     /**
      * 设置close监听
+     * @param listener 关闭事件
      */
     public void setOnDialogCloseListener(OnDialogCloseListener listener) {
         this.dialogCloseListener = listener;

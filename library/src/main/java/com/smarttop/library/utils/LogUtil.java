@@ -22,7 +22,7 @@ import java.util.zip.ZipOutputStream;
  * 3.控制单个日志文件最大限制.由LOG_MAXSIZE常量控制,保留两个最新日志文件 4.文件日志输出目标
  *
  * @author smartTop
- * @data 2010-5-26
+ * @date 2010-5-26
  */
 public class LogUtil {
 
@@ -72,7 +72,7 @@ public class LogUtil {
     /**
      * 设置context
      *
-     * @param context
+     * @param context 安卓上下文
      */
     public void setContext(Context context) {
         mContext = context;
@@ -301,7 +301,7 @@ public class LogUtil {
     /**
      * 获得日志目录
      *
-     * @return
+     * @return 文件
      * @author houmiao.xiong
      */
     protected File getLogFolder() {

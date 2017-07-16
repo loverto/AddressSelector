@@ -40,7 +40,7 @@ public class AddressDictManager {
 
     /**
      * 增加一个地址
-     * @param adress
+     * @param adress 地址
      */
     public void inserddress(AdressBean.ChangeRecordsBean adress){
         if(adress !=null){
@@ -61,7 +61,7 @@ public class AddressDictManager {
     }
     /**
      * 增加地址集合
-     * @param list
+     * @param list 地址集合
      */
     public void insertAddress(List<AdressBean.ChangeRecordsBean> list){
         if(list !=null){
@@ -104,7 +104,7 @@ public class AddressDictManager {
 
     /**
      * 查找 地址 数据
-     * @return
+     * @return 地址集合
      */
     public List<AdressBean.ChangeRecordsBean> getAddressList(){
         List<AdressBean.ChangeRecordsBean> list = new ArrayList<>();
@@ -123,7 +123,7 @@ public class AddressDictManager {
 
     /**
      * 获取省份列表
-     * @return
+     * @return 省份集合
      */
     public List<Province> getProvinceList(){
         List<Province> provinceList = new ArrayList<>();
@@ -142,8 +142,8 @@ public class AddressDictManager {
 
     /**
      * 获取省份
-     * @return
-     * @param provinceCode
+     * @return 省份名称
+     * @param provinceCode 省份编码
      */
     public String getProvince(String provinceCode){
         Cursor cursor = db.rawQuery("select * from " + TableField.TABLE_ADDRESS_DICT+" where "+ ADDRESS_DICT_FIELD_CODE+"=?", new String[]{provinceCode});
@@ -160,7 +160,8 @@ public class AddressDictManager {
     }
     /**
      * 获取省份对应的城市列表
-     * @return
+     * @return 城市集合
+     * @param provinceId 城市编码
      */
     public List<City> getCityList(int  provinceId){
         List<City> cityList = new ArrayList<>();
@@ -178,7 +179,8 @@ public class AddressDictManager {
 
     /**
      * 获取城市
-     * @return
+     * @return 城市名称
+     * @param cityCode 城市编码
      */
     public String getCity(String cityCode){
         Cursor cursor = db.rawQuery("select * from " + TableField.TABLE_ADDRESS_DICT+" where "+ ADDRESS_DICT_FIELD_CODE+"=?", new String[]{cityCode});
@@ -196,7 +198,8 @@ public class AddressDictManager {
 
     /**
      * 获取城市对应的区，乡镇列表
-     * @return
+     * @return 乡镇集合
+     * @param cityId 城市编码
      */
     public List<County> getCountyList(int cityId){
         List<County> countyList = new ArrayList<>();
@@ -226,7 +229,8 @@ public class AddressDictManager {
     }
     /**
      * 获取区，乡镇对应的街道列表
-     * @return
+     * @return 街道集合
+     * @param countyId 城市编码
      */
     public List<Street> getStreetList(int countyId){
         List<Street> streetList = new ArrayList<>();
@@ -258,7 +262,7 @@ public class AddressDictManager {
     /**
      * 查找消息临时列表中是否存在这一条记录
      * @param bannerInfo banner数据
-     * @return
+     * @return 结果数
      */
     public int isExist(AdressBean.ChangeRecordsBean bannerInfo){
         int count = 0;
