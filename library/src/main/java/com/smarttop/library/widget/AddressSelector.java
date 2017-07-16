@@ -48,6 +48,16 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
     private int countyIndex = INDEX_INVALID;//乡镇的下标
     private int streetIndex = INDEX_INVALID;//街道的下标
 
+    private boolean everyCallBack;//是否每次点击的时候都走回掉函数
+
+    public boolean isEveryCallBack() {
+        return everyCallBack;
+    }
+
+    public void setEveryCallBack(boolean everyCallBack) {
+        this.everyCallBack = everyCallBack;
+    }
+
     private Context context;
     private final LayoutInflater inflater;
     private View view;
@@ -154,11 +164,13 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      * 得到数据库管理者
+     *
      * @return 地址词典管理器
      */
-    public AddressDictManager getAddressDictManager(){
+    public AddressDictManager getAddressDictManager() {
         return addressDictManager;
     }
+
     /**
      * 初始化布局
      */
@@ -186,53 +198,62 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
     }
 
     /**
-     *设置字体选中的颜色
-     * @param  selectedColor 选中颜色
+     * 设置字体选中的颜色
+     *
+     * @param selectedColor 选中颜色
      */
-     public void setTextSelectedColor(int selectedColor){
-            this.selectedColor = selectedColor;
-     }
+    public void setTextSelectedColor(int selectedColor) {
+        this.selectedColor = selectedColor;
+    }
 
     /**
-     *设置字体没有选中的颜色
+     * 设置字体没有选中的颜色
+     *
      * @param unSelectedColor 未选中颜色
      */
-    public void setTextUnSelectedColor(int unSelectedColor){
-            this.unSelectedColor = unSelectedColor;
+    public void setTextUnSelectedColor(int unSelectedColor) {
+        this.unSelectedColor = unSelectedColor;
     }
+
     /**
      * 设置字体的大小
+     *
      * @param dp 字体大小单位 dp
      */
-   public void setTextSize(float dp){
-       textViewProvince.setTextSize(dp);
-       textViewCity.setTextSize(dp);
-       textViewCounty.setTextSize(dp);
-       textViewStreet.setTextSize(dp);
-   }
+    public void setTextSize(float dp) {
+        textViewProvince.setTextSize(dp);
+        textViewCity.setTextSize(dp);
+        textViewCounty.setTextSize(dp);
+        textViewStreet.setTextSize(dp);
+    }
 
     /**
      * 设置字体的背景
+     *
      * @param colorId 颜色
      */
-    public void setBackgroundColor(int colorId){
+    public void setBackgroundColor(int colorId) {
         layout_tab.setBackgroundColor(context.getResources().getColor(colorId));
     }
 
     /**
      * 设置指示器的背景
+     *
      * @param colorId 颜色编码
      */
-    public void setIndicatorBackgroundColor(int colorId){
+    public void setIndicatorBackgroundColor(int colorId) {
         indicator.setBackgroundColor(context.getResources().getColor(colorId));
     }
+
     /**
      * 设置指示器的背景
+     *
      * @param color 颜色
      */
-    public void setIndicatorBackgroundColor(String color){
+    public void setIndicatorBackgroundColor(String color) {
         indicator.setBackgroundColor(Color.parseColor(color));
     }
+
     /**
      * 初始化adapter
      */
@@ -307,7 +328,7 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
         textViewCity.setEnabled(tabIndex != INDEX_TAB_CITY);
         textViewCounty.setEnabled(tabIndex != INDEX_TAB_COUNTY);
         textViewStreet.setEnabled(tabIndex != INDEX_TAB_STREET);
-        if(selectedColor!=0 && unSelectedColor!=0){
+        if (selectedColor != 0 && unSelectedColor != 0) {
             updateTabTextColor();
         }
     }
@@ -315,29 +336,29 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
     /**
      * 更新字体的颜色
      */
-    private void updateTabTextColor(){
-    if(tabIndex != INDEX_TAB_PROVINCE){
-        textViewProvince.setTextColor(context.getResources().getColor(selectedColor));
-    }else{
-        textViewProvince.setTextColor(context.getResources().getColor(unSelectedColor));
-    }
-    if(tabIndex != INDEX_TAB_CITY){
-        textViewCity.setTextColor(context.getResources().getColor(selectedColor));
-    }else{
-        textViewCity.setTextColor(context.getResources().getColor(unSelectedColor));
-    }
-    if(tabIndex != INDEX_TAB_COUNTY){
-        textViewCounty.setTextColor(context.getResources().getColor(selectedColor));
-    }else{
-        textViewCounty.setTextColor(context.getResources().getColor(unSelectedColor));
-    }
-    if(tabIndex != INDEX_TAB_STREET){
-        textViewStreet.setTextColor(context.getResources().getColor(selectedColor));
-    }else{
-        textViewStreet.setTextColor(context.getResources().getColor(unSelectedColor));
-    }
+    private void updateTabTextColor() {
+        if (tabIndex != INDEX_TAB_PROVINCE) {
+            textViewProvince.setTextColor(context.getResources().getColor(selectedColor));
+        } else {
+            textViewProvince.setTextColor(context.getResources().getColor(unSelectedColor));
+        }
+        if (tabIndex != INDEX_TAB_CITY) {
+            textViewCity.setTextColor(context.getResources().getColor(selectedColor));
+        } else {
+            textViewCity.setTextColor(context.getResources().getColor(unSelectedColor));
+        }
+        if (tabIndex != INDEX_TAB_COUNTY) {
+            textViewCounty.setTextColor(context.getResources().getColor(selectedColor));
+        } else {
+            textViewCounty.setTextColor(context.getResources().getColor(unSelectedColor));
+        }
+        if (tabIndex != INDEX_TAB_STREET) {
+            textViewStreet.setTextColor(context.getResources().getColor(selectedColor));
+        } else {
+            textViewStreet.setTextColor(context.getResources().getColor(unSelectedColor));
+        }
 
-}
+    }
 
     /**
      * 点击省份的监听
@@ -415,15 +436,16 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
     /**
      * 点击右边关闭dialog监听
      */
-    class onCloseClickListener implements View.OnClickListener{
+    class onCloseClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
-            if(dialogCloseListener!=null){
+            if (dialogCloseListener != null) {
                 dialogCloseListener.dialogclose();
             }
         }
     }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (tabIndex) {
@@ -499,6 +521,11 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
                 break;
         }
+
+        //如果每次回掉设置了，就每次都走回调
+        if(everyCallBack){
+            callbackInternal();
+        }
     }
 
 
@@ -514,7 +541,8 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      * 根据省份id查询城市列表
-     * @param provinceId  省份id
+     *
+     * @param provinceId 省份id
      */
     private void retrieveCitiesWith(int provinceId) {
         progressBar.setVisibility(View.VISIBLE);
@@ -524,15 +552,18 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      * 根据城市id查询乡镇列表
+     *
      * @param cityId 城市id
      */
-    private void retrieveCountiesWith(int cityId){
+    private void retrieveCountiesWith(int cityId) {
         progressBar.setVisibility(View.VISIBLE);
         List<County> countyList = addressDictManager.getCountyList(cityId);
         handler.sendMessage(Message.obtain(handler, WHAT_COUNTIES_PROVIDED, countyList));
     }
+
     /**
      * 根据乡镇id查询乡镇列表
+     *
      * @param countyId 乡镇id
      */
     private void retrieveStreetsWith(int countyId) {
@@ -566,11 +597,13 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      * 获得view
+     *
      * @return view组件
      */
     public View getView() {
         return view;
     }
+
     /**
      * 省份的adapter
      */
@@ -786,16 +819,20 @@ public class AddressSelector implements AdapterView.OnItemClickListener {
 
     /**
      * 设置地址监听
+     *
      * @param listener 地址的监听事件
      */
     public void setOnAddressSelectedListener(OnAddressSelectedListener listener) {
         this.listener = listener;
     }
-    public interface OnDialogCloseListener{
+
+    public interface OnDialogCloseListener {
         void dialogclose();
     }
+
     /**
      * 设置close监听
+     *
      * @param listener 关闭事件
      */
     public void setOnDialogCloseListener(OnDialogCloseListener listener) {
